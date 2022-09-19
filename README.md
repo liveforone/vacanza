@@ -13,12 +13,12 @@
 * 뷰단의 경우 select 박스로 아래의 4가지 신청서비스중 하나를 고르도록한다.
 * 시작날짜와 막일 날짜를 입력한다. 입력은 총 4개로 시작 월/일, 끝 월/일
 * 부서와 이름을 입력한다.
-* 휴가 또는 재택중 연락가능한 연락처(메일, 전화번호 등)을 한 개 입력한다.
+* 휴가 또는 재택중 연락가능한 연락처(메일은 자동 매핑됨, 전화번호나 카톡만 입력하면됨)을 한 개 입력한다.
 * 첫 화면에서 신청버튼으로 신청하고, 첫화면에 여러사람들이 신청한 휴가 및 재택이 올라온다.(페이징)
 * 화면에 제목으로 이름이 뜨고, 그 아래 혹은 옆에 신청한 휴가 및 재택 종류가 표시된다.
 * 해당 게시물을 클릭하면 연락처 시작일, 막일 등을 알 수 있다.
 * 검색 기능은 제공하지 않으며, 페이징 기능은 제공한다.
-* 공지 게시판의 경우 admin만 글 작성 가능하다.(타임리프가 아닌 rest 서버 이므로, 권한 판별은 서버단에서 진행한다.)
+* 공지 게시판에서 공지를 작성하면된다.
 
 ## 신청 서비스 종류
 1. 연차 : 유급 휴가
@@ -73,6 +73,14 @@ kind : 연차/공가/병가/재택
 kind : 연차/공가/병가/재택
 </pre>
 
+#### notice
+<pre>
+{
+	"title" : "notice",
+	"content" : "this is notice"
+}
+</pre>
+
 ## api
 * / - get
 * /user/signup - get & post
@@ -80,7 +88,7 @@ kind : 연차/공가/병가/재택
 * /apply/home - get
 * /apply/post - post
 * /notice - get(authenticated)
-* /notice/post - post(admin)
+* /notice/post - post
 
 ## ResponseEntity 에서 리다이렉트하기
 ```
@@ -88,5 +96,3 @@ HttpHeaders httpHeaders = new HttpHeaders();
 httpHeaders.setLocation(URI.create("경로"));  //해당 경로로 리다이렉트
 return new ResponseEntity<>(httpHeaders, HttpStatus.MOVED_PERMANENTLY);
 ```
-
-notice 게시글 등록 권한 테스트 해보기

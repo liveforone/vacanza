@@ -15,6 +15,7 @@ import vacanza.vacanza.dto.ApplyDto;
 import vacanza.vacanza.service.ApplyService;
 
 import java.net.URI;
+import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,16 +41,18 @@ public class ApplyController {
     @PostMapping("/apply/post")
     public ResponseEntity<?> post(
             @RequestPart ApplyDto applyDto,
-            @RequestPart("kind") String kind
+            @RequestPart("kind") String kind,
+            Principal principal
     ) {
+        String email = principal.getName();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(URI.create("/apply/home"));
         // 리다이렉트 되진 않고, 헤더는 넘어간다. 프론트에서 헤더 받아서 리다이렉트 처리.
 
-        applyService.saveApply(applyDto, kind);
+        applyService.saveApply(applyDto, kind, email);
         log.info("Apply Save Success!!");
 
-        return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(httpHeaders, HttpStatus.MOVED_PERMANENTLY);
     }
 
     @GetMapping("/apply/{id}")

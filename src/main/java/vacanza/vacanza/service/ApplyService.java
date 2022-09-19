@@ -21,7 +21,8 @@ public class ApplyService {
     }
 
     @Transactional
-    public void saveApply(ApplyDto applyDto, String kind) {
+    public void saveApply(ApplyDto applyDto, String kind, String email) {
+        applyDto.setEmail(email);
         applyDto.setKind(kind);
         applyRepository.save(applyDto.toEntity());
     }

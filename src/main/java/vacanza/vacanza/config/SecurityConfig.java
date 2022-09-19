@@ -51,7 +51,6 @@ public class SecurityConfig {
                 .antMatchers("/apply/home").authenticated()
                 .antMatchers("/apply/post").hasRole("MEMBER")
                 .antMatchers("/notice").authenticated()
-                .antMatchers("/notice/post").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .and()
                 .logout()

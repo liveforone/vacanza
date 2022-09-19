@@ -17,6 +17,7 @@ public class ApplyDto {
     private String depart;
     private String contact;
     private String kind;
+    private String email;
 
     public Apply toEntity() {
         return Apply.builder()
@@ -29,6 +30,7 @@ public class ApplyDto {
                 .depart(depart)
                 .contact(contact)
                 .kind(kind)
+                .email(email)
                 .build();
     }
 }

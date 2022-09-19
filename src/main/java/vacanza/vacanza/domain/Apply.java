@@ -33,8 +33,10 @@ public class Apply {
 
     private String kind; //휴가 및 재택 종류
 
+    private String email;
+
     @Builder
-    public Apply(Long id, String user, int startMon, int startDay, int endMon, int endDay, String depart, String contact, String kind) {
+    public Apply(Long id, String user, int startMon, int startDay, int endMon, int endDay, String depart, String contact, String kind, String email) {
         this.id = id;
         this.user = user;
         this.startMon = startMon;
@@ -44,5 +46,6 @@ public class Apply {
         this.depart = depart;
         this.contact = contact;
         this.kind = kind;
+        this.email = email;
     }
 }
