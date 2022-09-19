@@ -27,6 +27,7 @@
 4. 재택 : 재택 근무
 * 신청서비스는 select 박스로 선택하기 때문에 파라미터로 넘어온다. 
 * 따라서 requestpart로 kind(서비스 종류)와 applyDto를 입력받아야한다.
+* dddd
 
 ## 도메인 
 1. apply - 신청
